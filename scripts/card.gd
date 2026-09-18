@@ -40,10 +40,22 @@ func _gui_input(event: InputEvent) -> void:
 			rotation_degrees = 0
 			drag_offset = global_position - get_global_mouse_position()
 			drag_started.emit(self)
-		elif dragging:
-			dragging = false
-			drag_ended.emit(self, get_global_mouse_position())
+
+func _unhandled_input(event: InputEvent) -> void:
+	if dragging and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if not event.pressed:
+			_end_drag()
 
 func _process(_delta: float) -> void:
 	if dragging:
+		# Safety fallback if mouse button is released outside window or capture missed
+		if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			_end_drag()
+			return
 		global_position = get_global_mouse_position() + drag_offset
+
+func _end_drag() -> void:
+	if not dragging:
+		return
+	dragging = false
+	drag_ended.emit(self, get_global_mouse_position())
