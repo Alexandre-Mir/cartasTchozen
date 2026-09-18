@@ -4,6 +4,7 @@ extends Control
 @onready var player_field: HBoxContainer = $Board/PlayerField
 @onready var enemy_field: HBoxContainer = $Board/EnemyField
 @onready var drag_layer: Control = $DragLayer
+@onready var mana_label: Label = $ManaLabel
 
 const CARD_SCENE = preload("res://scenes/card.tscn")
 const HAND_SIZE = 5
@@ -14,6 +15,8 @@ const ARC_RADIUS = 1500.0
 const MAX_SPREAD_DEGREES = 28.0
 
 func _ready() -> void:
+	PlayerState.mana_changed.connect(_on_mana_changed)
+	_update_mana_display(PlayerState.current_mana, PlayerState.max_mana)
 	_draw_starting_hand()
 
 func _draw_starting_hand() -> void:
@@ -64,7 +67,10 @@ func _on_card_drag_ended(card: Card, drop_position: Vector2) -> void:
 	drag_layer.remove_child(card)
 
 	var field_rect = player_field.get_global_rect()
-	if field_rect.has_point(drop_position):
+	var card_cost = card.data.cost if card.data else 0
+
+	if field_rect.has_point(drop_position) and PlayerState.current_mana >= card_cost:
+		PlayerState.current_mana -= card_cost
 		hand_cards.erase(card)
 		player_field.add_child(card)
 		card.rotation_degrees = 0
@@ -72,3 +78,11 @@ func _on_card_drag_ended(card: Card, drop_position: Vector2) -> void:
 	else:
 		hand.add_child(card)
 		_arrange_hand()
+
+func _on_mana_changed(current: int, max_mana: int) -> void:
+	_update_mana_display(current, max_mana)
+
+func _update_mana_display(current: int, max_mana: int) -> void:
+	if mana_label:
+		mana_label.text = "Mana: %d/%d" % [current, max_mana]
+
