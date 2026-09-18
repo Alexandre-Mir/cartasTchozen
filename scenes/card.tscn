@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://dllhfvy40a7i8"]
+
+[ext_resource type="Script" uid="uid://bpblykv4p6m76" path="res://scripts/card.gd" id="1_kg30u"]
+[ext_resource type="Texture2D" uid="uid://bschmbamic8jk" path="res://assets/Card.png" id="2_kg30u"]
+[ext_resource type="FontFile" uid="uid://d1cearw1hsh07" path="res://assets/Beleren-Bold.ttf" id="3_kg30u"]
+[ext_resource type="Texture2D" uid="uid://2bt1vtv1kswc" path="res://assets/arts/Bom dia kaio_1122x815.jpg" id="4_kg30u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpvog"]
+bg_color = Color(0.79607844, 0.7607843, 0.7490196, 1)
+border_width_left = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+expand_margin_left = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="SystemFont" id="SystemFont_8dvf0"]
+font_names = PackedStringArray("Merriweather")
+
+[node name="Card" type="Control" unique_id=783006647]
+custom_minimum_size = Vector2(336, 468)
+clip_contents = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -234.0
+offset_right = 168.0
+offset_bottom = 234.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_kg30u")
+
+[node name="CardImage" type="TextureRect" parent="." unique_id=1098086017]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 336.0
+offset_bottom = 468.00003
+mouse_filter = 2
+texture = ExtResource("2_kg30u")
+expand_mode = 1
+
+[node name="NameLabel" type="Label" parent="CardImage" unique_id=1137110120]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(532, -1)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 26.0
+offset_right = 295.0
+offset_bottom = 50.0
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_kg30u")
+theme_override_font_sizes/font_size = 18
+text = "FAREJANDO A BUSSY"
+uppercase = true
+
+[node name="TypeLabel" type="Label" parent="CardImage" unique_id=266830097]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(567, 52)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 264.0
+offset_right = 311.0
+offset_bottom = 290.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_kg30u")
+theme_override_font_sizes/font_size = 15
+text = "Tipo — Subtipo"
+vertical_alignment = 1
+
+[node name="CardArt" type="TextureRect" parent="CardImage" unique_id=1581783366]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(570, 414)
+layout_mode = 0
+offset_left = 26.0
+offset_top = 54.0
+offset_right = 311.0
+offset_bottom = 261.0
+mouse_filter = 2
+texture = ExtResource("4_kg30u")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ColorRect" type="Panel" parent="CardImage" unique_id=969798099]
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 1
+offset_left = 291.0
+offset_top = 25.0
+offset_right = 311.0
+offset_bottom = 45.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rpvog")
+
+[node name="CostLabel" type="Label" parent="CardImage/ColorRect" unique_id=974834911]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.07450981, 0.047058824, 0.05490196, 1)
+theme_override_fonts/font = ExtResource("3_kg30u")
+theme_override_font_sizes/font_size = 16
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="CardImage" unique_id=169924221]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -170.0
+offset_right = 139.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -3
+theme_override_fonts/font = SubResource("SystemFont_8dvf0")
+theme_override_font_sizes/font_size = 12
+text = "Descrição muito grandona pra testar o espaço do treco. Vamo escrever mais aqui pra ver o que acontece kkkkkk oi ferd olha que legal to aprendendo mesmo"
+autowrap_mode = 3
+
+[node name="ResourceLabel" type="Label" parent="CardImage" unique_id=713482120]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(103, 44)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.79399997
+anchor_top = 0.89000005
+anchor_right = 0.934
+anchor_bottom = 0.94600004
+offset_left = -4.7839966
+offset_top = 0.47994995
+offset_right = 4.175995
+offset_bottom = 1.2719421
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_kg30u")
+theme_override_font_sizes/font_size = 17
+text = "0/0"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cekl38d6gftdl"]
+
+[ext_resource type="Script" uid="uid://biasyq5atgdsk" path="res://scripts/main.gd" id="1_uwrxv"]
+
+[node name="Game" type="Control" unique_id=162376404]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uwrxv")
+
+[node name="Board" type="Control" parent="." unique_id=1616489746]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EnemyField" type="HBoxContainer" parent="Board" unique_id=1968255977]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="PlayerField" type="HBoxContainer" parent="Board" unique_id=1268682075]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Hand" type="Control" parent="." unique_id=61998504]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DragLayer" type="Control" parent="." unique_id=1523883751]
+layout_mode = 1
+anchors_preset = 0
