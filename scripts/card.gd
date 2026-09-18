@@ -36,6 +36,8 @@ func _update_visuals() -> void:
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
+			if not PlayerState.can_player_act:
+				return
 			dragging = true
 			rotation_degrees = 0
 			drag_offset = global_position - get_global_mouse_position()

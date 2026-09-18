@@ -5,9 +5,12 @@ extends Control
 @onready var enemy_field: HBoxContainer = $Board/EnemyField
 @onready var drag_layer: Control = $DragLayer
 @onready var mana_label: Label = $ManaLabel
+@onready var end_turn_button: Button = $EndTurnButton
+@onready var turn_label: Label = $TurnLabel
 
 const CARD_SCENE = preload("res://scenes/card.tscn")
 const HAND_SIZE = 5
+const ENEMY_TURN_DURATION: float = 1.5
 
 var hand_cards: Array[Card] = []
 
@@ -16,7 +19,10 @@ const MAX_SPREAD_DEGREES = 28.0
 
 func _ready() -> void:
 	PlayerState.mana_changed.connect(_on_mana_changed)
+	PlayerState.turn_changed.connect(_on_turn_changed)
+	end_turn_button.pressed.connect(_on_end_turn_pressed)
 	_update_mana_display(PlayerState.current_mana, PlayerState.max_mana)
+	_update_turn_display(PlayerState.current_turn)
 	_draw_starting_hand()
 
 func _draw_starting_hand() -> void:
@@ -85,4 +91,39 @@ func _on_mana_changed(current: int, max_mana: int) -> void:
 func _update_mana_display(current: int, max_mana: int) -> void:
 	if mana_label:
 		mana_label.text = "Mana: %d/%d" % [current, max_mana]
+
+func _on_end_turn_pressed() -> void:
+	if not PlayerState.can_player_act:
+		return
+	end_turn()
+
+func end_turn() -> void:
+	PlayerState.set_turn(PlayerState.TurnOwner.ENEMY)
+	_start_enemy_turn()
+
+func _start_enemy_turn() -> void:
+	var timer = get_tree().create_timer(ENEMY_TURN_DURATION)
+	timer.timeout.connect(_on_enemy_turn_finished)
+
+func _on_enemy_turn_finished() -> void:
+	start_player_turn()
+
+func start_player_turn() -> void:
+	PlayerState.reset_mana()
+	PlayerState.set_turn(PlayerState.TurnOwner.PLAYER)
+
+func _on_turn_changed(turn_owner: PlayerState.TurnOwner) -> void:
+	_update_turn_display(turn_owner)
+
+func _update_turn_display(turn_owner: PlayerState.TurnOwner) -> void:
+	if turn_owner == PlayerState.TurnOwner.PLAYER:
+		if turn_label:
+			turn_label.text = "Turno do Jogador"
+		if end_turn_button:
+			end_turn_button.disabled = false
+	else:
+		if turn_label:
+			turn_label.text = "Turno do Inimigo..."
+		if end_turn_button:
+			end_turn_button.disabled = true
 
