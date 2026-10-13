@@ -3,6 +3,7 @@ class_name Card
 
 signal drag_started(card: Card)
 signal drag_ended(card: Card, drop_position: Vector2)
+signal inspect_requested(card: Card)
 
 @onready var card_type: TextureRect = %CardImage
 @onready var resource_label: Label = %ResourceLabel
@@ -38,6 +39,11 @@ func _update_visuals() -> void:
 		card_type.texture = data.type_frame
 
 func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		if not dragging:
+			inspect_requested.emit(self)
+			accept_event()
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			if not can_drag or face_down or not PlayerState.can_player_act:
@@ -94,4 +100,4 @@ func set_face_down(value: bool) -> void:
 	if is_instance_valid(back_panel):
 		back_panel.visible = value
 		card_type.visible = not value
-	mouse_filter = Control.MOUSE_FILTER_IGNORE if value else Control.MOUSE_FILTER_STOP
+	mouse_filter = Control.MOUSE_FILTER_STOP

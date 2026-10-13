@@ -49,3 +49,9 @@ O modelo atual de cartas já comporta custos, criaturas com ataque/vida e feiti�
 O protótipo repete as definições disponíveis para preencher os decks de 60 e embaralha cada deck. Isto não estabelece um limite de cópias nem implementa construção de deck.
 O turno adversário continua sendo uma espera automática; a compra adversária já respeita as mesmas regras, mas não há IA, combate ou multiplayer.
 As faces usam as artes, a moldura Card.png e a fonte Beleren-Bold.ttf originais. O verso continua provisório, pois ainda não há um asset dedicado para ele.
+
+## Inspeção de cartas
+- Clique direito em uma carta da mão ou em campo abre uma cópia ampliada sobre a mesa, sem alterar escala, posição ou estado da carta original.
+- Esc, outro clique direito ou clique esquerdo fora da prévia fecha a inspeção.
+- A prévia não pode ser arrastada nem jogar cartas; bloqueia cliques na mesa enquanto estiver aberta.
+- Na mão adversária, a prévia mostra somente o verso, sem copiar os dados ocultos.

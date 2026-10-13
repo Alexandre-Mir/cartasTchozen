@@ -1,6 +1,8 @@
 extends Control
 const CARD_SCENE = preload("res://scenes/card.tscn")
 const DECK_STATE = preload("res://scripts/deck_state.gd")
+const CARD_ZOOM = preload("res://scripts/card_zoom.gd")
+var card_zoom: Control
 var player = DECK_STATE.new()
 var enemy = DECK_STATE.new()
 var hand_cards: Array[Card] = []
@@ -78,6 +80,8 @@ func _build_table() -> void:
 	add_child(drag_layer)
 	drag_layer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	drag_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	card_zoom = CARD_ZOOM.new()
+	add_child(card_zoom)
 
 func _add_card_to_hand(data: CardData) -> void:
 	var card: Card = CARD_SCENE.instantiate()
@@ -85,6 +89,7 @@ func _add_card_to_hand(data: CardData) -> void:
 	card.setup(data)
 	card.drag_started.connect(_on_card_drag_started)
 	card.drag_ended.connect(_on_card_drag_ended)
+	card.inspect_requested.connect(card_zoom.open_card)
 	hand_cards.append(card)
 
 func _arrange_row(cards: Array[Card], area: Control) -> void:
@@ -113,6 +118,7 @@ func _arrange_cards() -> void:
 		var card: Card = CARD_SCENE.instantiate()
 		enemy_hand.add_child(card)
 		card.set_face_down(true)
+		card.inspect_requested.connect(card_zoom.open_card)
 		backs.append(card)
 	_arrange_row(backs, enemy_hand)
 
