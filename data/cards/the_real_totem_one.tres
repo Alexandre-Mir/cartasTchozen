@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://cde81c2gm5k63"]
 
 [ext_resource type="Script" uid="uid://dvdyu5bu1pcc4" path="res://data/card_data.gd" id="1_1pqdu"]
-[ext_resource type="Texture2D" uid="uid://dngc2qo2fqck6" path="res://assets/arts/The real Totem one_1086x789.jpg" id="1_njlww"]
-[ext_resource type="Texture2D" uid="uid://bschmbamic8jk" path="res://assets/Card.png" id="3_ne77f"]
+
+
 
 [resource]
 script = ExtResource("1_1pqdu")
@@ -12,6 +12,4 @@ cost = 3
 health = 3
 type_name = "Criatura"
 description = "Quando está em campo, transforma uma criatura em 🐱"
-art = ExtResource("1_njlww")
-type_frame = ExtResource("3_ne77f")
 metadata/_custom_type_script = "uid://dvdyu5bu1pcc4"

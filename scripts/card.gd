@@ -12,6 +12,9 @@ signal drag_ended(card: Card, drop_position: Vector2)
 @onready var type_label: Label = %TypeLabel
 @onready var description_label: Label = %DescriptionLabel
 
+var face_down := false
+var back_panel: Panel
+
 var data: CardData
 var dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
@@ -36,7 +39,7 @@ func _update_visuals() -> void:
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			if not PlayerState.can_player_act:
+			if face_down or not PlayerState.can_player_act:
 				return
 			dragging = true
 			rotation_degrees = 0
@@ -61,3 +64,39 @@ func _end_drag() -> void:
 		return
 	dragging = false
 	drag_ended.emit(self, get_global_mouse_position())
+
+func _ready() -> void:
+	for child in card_type.get_children():
+		if child is Control:
+			child.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var background := ColorRect.new()
+	background.color = Color(0.82, 0.80, 0.73)
+	background.size = Vector2(336, 468)
+	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(background)
+	move_child(background, 0)
+	back_panel = Panel.new()
+	back_panel.size = Vector2(336, 468)
+	back_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.12, 0.18, 0.30)
+	style.set_border_width_all(6)
+	style.border_color = Color(0.55, 0.65, 0.82)
+	back_panel.add_theme_stylebox_override("panel", style)
+	add_child(back_panel)
+	var label := Label.new()
+	back_panel.add_child(label)
+	label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	label.text = "TCHOZEN"
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	label.add_theme_font_size_override("font_size", 36)
+	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	set_face_down(face_down)
+
+func set_face_down(value: bool) -> void:
+	face_down = value
+	if is_instance_valid(back_panel):
+		back_panel.visible = value
+		card_type.visible = not value
+	mouse_filter = Control.MOUSE_FILTER_IGNORE if value else Control.MOUSE_FILTER_STOP

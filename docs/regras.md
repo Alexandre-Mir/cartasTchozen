@@ -34,3 +34,18 @@ O modelo atual de cartas já comporta custos, criaturas com ataque/vida e feiti�
 - Manter identidade de carta, custo, estatísticas e efeitos estruturados como dados, sem fazer a lógica depender do texto de ambientação.
 - Mudar uma variável de balanceamento por vez e registrar a versão das regras usada em cada sessão de teste.
 - Usar as referências como inspiração; nomes, textos e efeitos finais devem refletir o grupo e não exigir reproduzir cartas existentes.
+
+## Mesa e compra confirmadas em 13/10/2026
+
+- Cada participante começa com um deck de 60 cartas e uma mão de 7; limite de mão: 7.
+- O deck fica com 53 cartas após a distribuição inicial.
+- No início de cada turno, compra até 2 cartas, limitada pelas vagas na mão e pelas cartas restantes no deck. A distribuição inicial não recebe compra adicional.
+- Jogador: cemitério à esquerda e deck à direita. Oponente: deck à esquerda e cemitério à direita da tela.
+- Cartas em campo ficam com o verso. Apenas a mão do jogador local mostra faces; a mão adversária fica oculta.
+- O cemitério tem área e estado separados, mas ainda não existe regra de envio de cartas a ele.
+- Deck vazio interrompe a compra; condição de vitória/derrota por esgotamento continua pendente.
+
+### Limitações desta versão
+O protótipo repete as definições disponíveis para preencher os decks de 60 e embaralha cada deck. Isto não estabelece um limite de cópias nem implementa construção de deck.
+O turno adversário continua sendo uma espera automática; a compra adversária já respeita as mesmas regras, mas não há IA, combate ou multiplayer.
+Na ausência dos assets ignorados pelo Git, as cartas usam faces simples com texto e um verso provisório.
