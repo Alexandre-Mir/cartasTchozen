@@ -55,3 +55,9 @@ As faces usam as artes, a moldura Card.png e a fonte Beleren-Bold.ttf originais.
 - Esc, outro clique direito ou clique esquerdo fora da prévia fecha a inspeção.
 - A prévia não pode ser arrastada nem jogar cartas; bloqueia cliques na mesa enquanto estiver aberta.
 - Na mão adversária, a prévia mostra somente o verso, sem copiar os dados ocultos.
+
+## Animação da mão
+A mão local usa novamente o leque em arco e transições de 0,2 segundo. A abertura cresce com a quantidade de cartas, até 7, e a escala se adapta à área da mão. Arrastar interrompe a transição da carta; jogar ou devolver reorganiza o leque. As cartas em campo continuam em fila e a inspeção ampliada não altera o leque.
+
+## Apresentação da arte e descrição
+Na mão e no campo, a arte ocupa a região inferior antes reservada à descrição. Nome, custo, tipo e atributos continuam visíveis. A inspeção por clique direito reduz suavemente a área da arte e revela a caixa de descrição, em uma transição de aproximadamente 0,24 segundo. Cartas ocultas não revelam descrição.

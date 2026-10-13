@@ -24,6 +24,8 @@ func open_card(source: Card) -> void:
 	if not source.face_down and source.data != null:
 		preview.setup(source.data)
 	preview.set_face_down(source.face_down)
+	if not source.face_down:
+		preview.set_details_visible(true)
 	_ignore_mouse(preview)
 	show()
 	_fit_preview()

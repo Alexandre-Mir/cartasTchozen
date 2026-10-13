@@ -103,12 +103,44 @@ func _arrange_row(cards: Array[Card], area: Control) -> void:
 		var card := cards[i]
 		if card.dragging:
 			continue
+		if card.placement_tween != null:
+			card.placement_tween.kill()
+		card.pivot_offset = Vector2.ZERO
 		card.scale = Vector2.ONE * card_scale
 		card.rotation = 0
 		card.position = Vector2((area.size.x - total) / 2 + step * i, 28)
 
+func _arrange_hand() -> void:
+	var count := hand_cards.size()
+	if count == 0:
+		return
+	# Preserve the original arc and 0.2-second animation, fitted to this area.
+	var spread := minf(42.0, 7.0 * (count - 1))
+	var half_angle := deg_to_rad(spread / 2.0)
+	var reference_height := 468.0 * cos(half_angle) + 336.0 * sin(half_angle) + 1500.0 * (1.0 - cos(half_angle))
+	var reference_width := 3000.0 * sin(half_angle) + 336.0 * cos(half_angle) + 468.0 * sin(half_angle)
+	var factor := maxf(0.05, minf(0.5, minf((hand.size.y - 40.0) / reference_height, (hand.size.x - 24.0) / reference_width)))
+	var radius := 1500.0 * factor
+	var center_y := 28.0 + (468.0 * cos(half_angle) + 336.0 * sin(half_angle)) * factor / 2.0
+	for i in range(count):
+		var card := hand_cards[i]
+		if card.dragging:
+			continue
+		if card.placement_tween != null:
+			card.placement_tween.kill()
+		card.pivot_offset = card.size / 2.0
+		card.scale = Vector2.ONE * factor
+		var t := 0.0 if count == 1 else float(i) / float(count - 1) - 0.5
+		var angle := t * spread
+		var radians := deg_to_rad(angle)
+		var center := Vector2(hand.size.x / 2.0 + sin(radians) * radius, center_y + (1.0 - cos(radians)) * radius)
+		card.placement_tween = create_tween().set_parallel(true)
+		card.placement_tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		card.placement_tween.tween_property(card, "position", center - card.size / 2.0, 0.2)
+		card.placement_tween.tween_property(card, "rotation_degrees", angle, 0.2)
+
 func _arrange_cards() -> void:
-	_arrange_row(hand_cards, hand)
+	_arrange_hand()
 	_arrange_row(field_cards, player_field)
 	for child in enemy_hand.get_children():
 		if child is Card:
