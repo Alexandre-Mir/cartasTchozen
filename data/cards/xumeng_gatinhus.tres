@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://c4iojcc0oeqjr"]
 
 [ext_resource type="Script" uid="uid://dvdyu5bu1pcc4" path="res://data/card_data.gd" id="1_c25u8"]
-
-
+[ext_resource type="Texture2D" uid="uid://c507k1frv44dm" path="res://assets/arts/Xumeng gatinhus_1122x815.jpg" id="1_u4pad"]
+[ext_resource type="Texture2D" uid="uid://bschmbamic8jk" path="res://assets/Card.png" id="3_r7mrg"]
 
 [resource]
 script = ExtResource("1_c25u8")
@@ -12,5 +12,7 @@ cost = 3
 attack = 3
 health = 2
 type_name = "Criatura - Manhoso"
-description = "Olha ele todo cuticuti com a mãozinha no queixo e coroazinha mds. Ele tá todo manhoso e por isso só pode ser atacado por outra criatura manhosa"
+description = "Olha ele todo cuticuti com a m�ozinha no queixo e coroazinha mds. Ele t� todo manhoso e por isso s� pode ser atacado por outra criatura manhosa"
+art = ExtResource("1_u4pad")
+type_frame = ExtResource("3_r7mrg")
 metadata/_custom_type_script = "uid://dvdyu5bu1pcc4"

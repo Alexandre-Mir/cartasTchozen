@@ -13,6 +13,7 @@ signal drag_ended(card: Card, drop_position: Vector2)
 @onready var description_label: Label = %DescriptionLabel
 
 var face_down := false
+var can_drag := true
 var back_panel: Panel
 
 var data: CardData
@@ -39,7 +40,7 @@ func _update_visuals() -> void:
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			if face_down or not PlayerState.can_player_act:
+			if not can_drag or face_down or not PlayerState.can_player_act:
 				return
 			dragging = true
 			rotation_degrees = 0
@@ -69,12 +70,6 @@ func _ready() -> void:
 	for child in card_type.get_children():
 		if child is Control:
 			child.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var background := ColorRect.new()
-	background.color = Color(0.82, 0.80, 0.73)
-	background.size = Vector2(336, 468)
-	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(background)
-	move_child(background, 0)
 	back_panel = Panel.new()
 	back_panel.size = Vector2(336, 468)
 	back_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
