@@ -74,7 +74,7 @@ offset_bottom = 290.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_kg30u")
 theme_override_font_sizes/font_size = 15
-text = "Tipo - Subtipo"
+text = "Tipo — Subtipo"
 vertical_alignment = 1
 
 [node name="CardArt" type="TextureRect" parent="CardImage" unique_id=1581783366]
@@ -137,7 +137,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -3
 theme_override_fonts/font = SubResource("SystemFont_8dvf0")
 theme_override_font_sizes/font_size = 12
-text = "Descri��o muito grandona pra testar o espa�o do treco. Vamo escrever mais aqui pra ver o que acontece kkkkkk oi ferd olha que legal to aprendendo mesmo"
+text = "Descrição muito grandona pra testar o espaço do treco. Vamo escrever mais aqui pra ver o que acontece kkkkkk oi ferd olha que legal to aprendendo mesmo"
 autowrap_mode = 3
 
 [node name="ResourceLabel" type="Label" parent="CardImage" unique_id=713482120]

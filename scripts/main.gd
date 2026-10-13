@@ -55,10 +55,10 @@ func _pile(rect: Rect2) -> Label:
 	return label
 
 func _build_table() -> void:
-	enemy_hand = _area("M�o do oponente", Rect2(0.18, 0.02, 0.64, 0.14))
+	enemy_hand = _area("Mão do oponente", Rect2(0.18, 0.02, 0.64, 0.14))
 	_area("Campo do oponente", Rect2(0.18, 0.18, 0.64, 0.25))
 	player_field = _area("Seu campo", Rect2(0.18, 0.48, 0.64, 0.25))
-	hand = _area("Sua m�o - m�ximo 7", Rect2(0.18, 0.76, 0.64, 0.23))
+	hand = _area("Sua mão — máximo 7", Rect2(0.18, 0.76, 0.64, 0.23))
 	piles.enemy_deck = _pile(Rect2(0.02, 0.18, 0.14, 0.25))
 	piles.enemy_graveyard = _pile(Rect2(0.84, 0.18, 0.14, 0.25))
 	piles.player_graveyard = _pile(Rect2(0.02, 0.48, 0.14, 0.25))
@@ -139,8 +139,8 @@ func _on_card_drag_ended(card: Card, drop_position: Vector2) -> void:
 func _update_piles() -> void:
 	piles.player_deck.text = "DECK\nVerso\n%d cartas" % player.deck.size()
 	piles.enemy_deck.text = "DECK\nVerso\n%d cartas" % enemy.deck.size()
-	piles.player_graveyard.text = "CEMIT�RIO\n%d cartas" % player.graveyard.size()
-	piles.enemy_graveyard.text = "CEMIT�RIO\n%d cartas" % enemy.graveyard.size()
+	piles.player_graveyard.text = "CEMITÉRIO\n%d cartas" % player.graveyard.size()
+	piles.enemy_graveyard.text = "CEMITÉRIO\n%d cartas" % enemy.graveyard.size()
 
 func _update_mana_display(current: int, maximum: int) -> void:
 	mana_label.text = "Mana: %d/%d" % [current, maximum]
