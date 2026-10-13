@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_yf3ns")
+card_id = &"x_brown"
 card_name = "X-Brown"
 cost = 4
 attack = 1

@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_lkp5g")
+card_id = &"sao_sulvestre"
 card_name = "São Sulvestre"
 cost = 5
 attack = 5

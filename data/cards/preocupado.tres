@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_5sqjd")
+card_id = &"preocupado"
 card_name = "Preocupado"
 cost = 1
 type_name = "Feitiço"

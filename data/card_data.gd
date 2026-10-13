@@ -1,7 +1,8 @@
 extends Resource
 class_name CardData
 
-
+# Identificador interno permanente. Nomes podem mudar ou se repetir; IDs não.
+@export var card_id: StringName = &""
 
 @export var card_name: String = ""
 @export var cost: int = 0

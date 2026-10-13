@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_1pqdu")
+card_id = &"the_real_totem_one"
 card_name = "The Real Totem One"
 cost = 3
 health = 3
