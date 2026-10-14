@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://cfdtv4h1yj7gh"]
 
 [ext_resource type="Script" uid="uid://dvdyu5bu1pcc4" path="res://data/card_data.gd" id="1_5sqjd"]
-
-
+[ext_resource type="Texture2D" uid="uid://btcd5rm6c43au" path="res://assets/arts/Preocupado_1050x763.jpg" id="1_mvs26"]
+[ext_resource type="Texture2D" uid="uid://bschmbamic8jk" path="res://assets/Card.png" id="3_xukdp"]
 
 [resource]
 script = ExtResource("1_5sqjd")
@@ -11,4 +11,6 @@ card_name = "Preocupado"
 cost = 1
 type_name = "Feitiço"
 description = "Você fica preocupado"
+art = ExtResource("1_mvs26")
+type_frame = ExtResource("3_xukdp")
 metadata/_custom_type_script = "uid://dvdyu5bu1pcc4"

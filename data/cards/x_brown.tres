@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://dwrej02wt5a2a"]
 
-
+[ext_resource type="Texture2D" uid="uid://pldg5u3dvvyd" path="res://assets/arts/Xbrown_1086x869.jpg" id="1_38nb3"]
 [ext_resource type="Script" uid="uid://dvdyu5bu1pcc4" path="res://data/card_data.gd" id="1_yf3ns"]
-
+[ext_resource type="Texture2D" uid="uid://bschmbamic8jk" path="res://assets/Card.png" id="3_fc3mj"]
 
 [resource]
 script = ExtResource("1_yf3ns")
@@ -13,4 +13,6 @@ attack = 1
 health = 1
 type_name = "Criatura"
 description = "A cada rodada adiciona +1/+1"
+art = ExtResource("1_38nb3")
+type_frame = ExtResource("3_fc3mj")
 metadata/_custom_type_script = "uid://dvdyu5bu1pcc4"

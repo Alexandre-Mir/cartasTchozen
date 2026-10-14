@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://8u6a70ft3l0g"]
 
-
+[ext_resource type="Texture2D" uid="uid://yhy2ibsyqq86" path="res://assets/arts/São Sulvestre_1086x789.jpg" id="1_18i1i"]
 [ext_resource type="Script" uid="uid://dvdyu5bu1pcc4" path="res://data/card_data.gd" id="1_lkp5g"]
-
+[ext_resource type="Texture2D" uid="uid://bschmbamic8jk" path="res://assets/Card.png" id="3_u4w7y"]
 
 [resource]
 script = ExtResource("1_lkp5g")
@@ -13,4 +13,6 @@ attack = 5
 health = 5
 type_name = "Criatura"
 description = "Ao 💀 na primeira vez, volta para sua mão"
+art = ExtResource("1_18i1i")
+type_frame = ExtResource("3_u4w7y")
 metadata/_custom_type_script = "uid://dvdyu5bu1pcc4"

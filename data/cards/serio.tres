@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://b15raxk61mv5a"]
 
 [ext_resource type="Script" uid="uid://dvdyu5bu1pcc4" path="res://data/card_data.gd" id="1_pldhp"]
-
-
+[ext_resource type="Texture2D" uid="uid://bho4tbjdjfpco" path="res://assets/arts/Sério _1122x815.jpg" id="1_u0lnx"]
+[ext_resource type="Texture2D" uid="uid://bschmbamic8jk" path="res://assets/Card.png" id="3_q61p2"]
 
 [resource]
 script = ExtResource("1_pldhp")
@@ -11,4 +11,6 @@ card_name = "Sério"
 cost = 1
 type_name = "Feitiço"
 description = "Você fica sério"
+art = ExtResource("1_u0lnx")
+type_frame = ExtResource("3_q61p2")
 metadata/_custom_type_script = "uid://dvdyu5bu1pcc4"

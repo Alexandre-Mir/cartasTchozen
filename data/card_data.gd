@@ -12,3 +12,6 @@ class_name CardData
 @export var description: String = ""
 @export var art: Texture2D
 @export var type_frame: Texture2D
+
+func is_spell() -> bool:
+	return type_name.to_lower().begins_with("feitiço")

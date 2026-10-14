@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://cmcejrqdldf3w"]
 
-
+[ext_resource type="Texture2D" uid="uid://1e2h8txn0bpk" path="res://assets/arts/Farejando a pussy_1122x815.jpg" id="1_yv1rx"]
 [ext_resource type="Script" uid="uid://dvdyu5bu1pcc4" path="res://data/card_data.gd" id="2_1bnm4"]
-
+[ext_resource type="Texture2D" uid="uid://bschmbamic8jk" path="res://assets/Card.png" id="3_ddqn5"]
 
 [resource]
 script = ExtResource("2_1bnm4")
@@ -13,4 +13,6 @@ attack = 1
 health = 2
 type_name = "Monstro"
 description = "Descrição"
+art = ExtResource("1_yv1rx")
+type_frame = ExtResource("3_ddqn5")
 metadata/_custom_type_script = "uid://dvdyu5bu1pcc4"
