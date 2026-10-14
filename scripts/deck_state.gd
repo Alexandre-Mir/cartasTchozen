@@ -5,7 +5,7 @@ var deck: Array[CardData] = []
 var hand: Array[CardData] = []
 var graveyard: Array[CardData] = []
 
-func setup(available: Array[CardData]) -> void:
+func setup(available: Array[CardData], initial_hand_size: int = HAND_LIMIT) -> void:
 	deck.clear()
 	hand.clear()
 	graveyard.clear()
@@ -14,7 +14,7 @@ func setup(available: Array[CardData]) -> void:
 	for i in range(DECK_SIZE):
 		deck.append(available[i % available.size()])
 	deck.shuffle()
-	draw(HAND_LIMIT)
+	draw(initial_hand_size)
 
 func draw(amount: int = 2) -> Array[CardData]:
 	var drawn: Array[CardData] = []

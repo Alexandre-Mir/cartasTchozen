@@ -23,6 +23,23 @@ var data: CardData
 var dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 var placement_tween: Tween
+var hand_position := Vector2.ZERO
+var hand_rotation := 0.0
+var hand_scale := Vector2.ONE
+var hand_order := 0
+var hand_hovered := false
+var hover_direction := -1.0
+
+func animate_hand_pose(duration: float = 0.16) -> void:
+	if placement_tween != null:
+		placement_tween.kill()
+	z_index = 100 if hand_hovered else hand_order
+	var target_position := hand_position + Vector2(0, 18.0 * hover_direction if hand_hovered else 0.0)
+	scale = hand_scale
+	placement_tween = create_tween().set_parallel(true)
+	placement_tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	placement_tween.tween_property(self, "position", target_position, duration)
+	placement_tween.tween_property(self, "rotation_degrees", hand_rotation, duration)
 
 func setup(p_data: CardData) -> void:
 	data = p_data

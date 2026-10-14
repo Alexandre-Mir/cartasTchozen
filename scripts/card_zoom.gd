@@ -16,15 +16,21 @@ func _ready() -> void:
 	hide()
 
 func open_card(source: Card) -> void:
+	_open_preview(source.data, source.face_down)
+
+func open_data(data: CardData) -> void:
+	_open_preview(data, false)
+
+func _open_preview(data: CardData, hidden: bool) -> void:
 	close()
 	preview = CARD_SCENE.instantiate()
 	add_child(preview)
 	preview.can_drag = false
 	# Hidden cards must never pass their data to the preview.
-	if not source.face_down and source.data != null:
-		preview.setup(source.data)
-	preview.set_face_down(source.face_down)
-	if not source.face_down:
+	if not hidden and data != null:
+		preview.setup(data)
+	preview.set_face_down(hidden)
+	if not hidden:
 		preview.set_details_visible(true)
 	_ignore_mouse(preview)
 	show()
